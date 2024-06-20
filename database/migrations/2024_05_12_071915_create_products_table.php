@@ -19,8 +19,7 @@ return new class extends Migration
             $table->decimal('discount', 5, 2)->nullable();
             $table->text('short_description')->default('null');
             $table->text('long_description')->default('null');
-            $table->text('size')->default('null');
-            $table->text('color')->default('null');
+            $table->string('size')->default('null');
             $table->boolean('availability')->default(true);
             $table->boolean('featured')->default(true);
             $table->boolean('popular')->default(true);

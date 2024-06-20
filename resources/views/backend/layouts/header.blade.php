@@ -32,35 +32,35 @@
         </div>
         <nav>
             <ul class="menu-aside">
-                <li class="menu-item active">
-                    <a class="menu-link" href="index.php"> <i class="icon material-icons md-home"></i>
+                <li class="menu-item {{ Request::is('admin') ? 'active' : '' }}">
+                    <a class="menu-link" href="{{ url('/admin') }}"> <i class="icon material-icons md-home"></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('products/list') ? 'active' : '' }}">
                     <a class="menu-link" href="{{ url('/products/list') }}"> <i
                             class="icon material-icons md-shopping_bag"></i>
                         <span class="text">Product</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('products/add') ? 'active' : '' }}">
                     <a class="menu-link" href="{{ url('/products/add') }}"> <i
                             class="icon material-icons md-add_box"></i>
                         <span class="text">Add product</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('categories/list') ? 'active' : '' }}">
                     <a class="menu-link" href="{{ url('/categories/list') }}"> <i
                             class="icon material-icons md-category"></i>
                         <span class="text">Categories</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('team/list') ? 'active' : '' }}">
                     <a class="menu-link" href="{{ url('/team/list') }}"> <i class="icon material-icons md-groups"></i>
                         <span class="text">Team Member</span>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('persona/list') ? 'active' : '' }}">
                     <a class="menu-link" href="{{ url('/persona/list') }}"> <i
                             class="icon material-icons md-comment"></i>
                         <span class="text">Personas</span>
