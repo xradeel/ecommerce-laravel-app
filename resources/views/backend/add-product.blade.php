@@ -57,7 +57,7 @@
                                     <div class="col-lg-4">
                                         <div class="mb-4">
                                             <label class="form-label">Discount</label>
-                                            <input placeholder="$" name="discount" id="discount" type="text"
+                                            <input placeholder="10%" name="discount" id="discount" type="text"
                                                 class="form-control">
                                         </div>
                                         @if ($errors->has('discount'))
@@ -131,21 +131,6 @@
                                                 title="Check if item is popular."><i
                                                     class="icon material-icons md-info"></i></span></label>
                                     </div>
-                                    <div class="col-lg-4 col-sm-12">
-                                        <select class="form-select" name="badge" required>
-                                            <option disabled selected> Select badge for product </option>
-                                            <option value="0">No badge</option>
-                                            <option value="1">New</option>
-                                            <option value="2">Best Sell</option>
-                                            <option value="3">Hot</option>
-                                            <option value="4">Discount of item</option>
-                                        </select>
-                                        @if ($errors->has('badge'))
-                                            <span class="text-danger">
-                                                {{ $errors->first('badge') }}
-                                            </span>
-                                        @endif
-                                    </div>
                                 </div>
                                 <div>
                                     <button class="btn btn-md mt-4 rounded font-sm hover-up"
@@ -176,8 +161,8 @@
                                             {{ $errors->first('thumbnail 2') }}
                                         </span>
                                     @endif
-                                    <label for="thumbnail2" class=" p-1">Select Product Images</label>
-                                    <input class="form-control" name="product_images" multiple id="thumbnail2"
+                                    <label for="product_images" class=" p-1">Select Product Images</label>
+                                    <input class="form-control" name="product_images[]" multiple id="product_images"
                                         type="file">
                                     @if ($errors->has('product_images'))
                                         <span class="text-danger">
@@ -203,12 +188,10 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="tags" class="form-label">Tags (Separated by comma) <span
-                                            data-toggle="tooltip" data-placement="top"
-                                            title="Show when user search keywords"><i
+                                    <label for="tags" class="form-label">Tags<span data-toggle="tooltip"
+                                            data-placement="top" title="It is Badge show on product."><i
                                                 class="icon material-icons md-info"></i></span></label>
-                                    <input type="text" class="form-control" name="tags"
-                                        placeholder="like: sale, shirt, popular, mens">
+                                    <input type="text" class="form-control" name="tags" placeholder="like: sale">
                                 </div>
                             </div>
                         </div>

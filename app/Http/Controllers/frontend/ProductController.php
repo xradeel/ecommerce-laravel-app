@@ -44,7 +44,8 @@ class ProductController extends Controller
     {
         $product = ProductModel::where('accesstoken', $accesstoken)->firstOrFail();
 
-        $product->load('images');
+        // $product->load('images');
+        $product->images = json_decode($product->images);
         return view('frontend.product', compact('product'));
     }
 

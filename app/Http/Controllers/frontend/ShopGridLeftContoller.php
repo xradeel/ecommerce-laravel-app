@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\AdminProductModel;
 use Illuminate\Http\Request;
 
 class ShopGridLeftContoller extends Controller
@@ -12,7 +13,11 @@ class ShopGridLeftContoller extends Controller
      */
     public function index()
     {
-        return view('frontend.shop-grid-left');
+        $products = AdminProductModel::with('category:id,name')
+            ->select('id', 'name', 'price', 'accesstoken', 'discount', 'thumbnail1', 'thumbnail2', 'tag')
+            ->get();
+        $latestThree = $dogs = AdminProductModel::select('id', 'name', 'price', 'accesstoken', 'discount', 'thumbnail1')->latest()->take(3)->get();
+        return view('frontend.shop-grid-left', compact('products', 'latestThree'));
     }
 
     /**

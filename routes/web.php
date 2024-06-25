@@ -36,7 +36,6 @@ Route::get('/shop-full', [ShopFullWidth::class, 'index']);
 Route::get('/persona', [PersonaController::class, 'index']);
 Route::get('/members', [MemberController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
-Route::get('/account', [AccountController::class, 'index']);
 Route::get('/not-found', [NotFoundController::class, 'index']);
 Route::get('/blogs', [BlogsGridController::class, 'index']);
 Route::get('/blog-post', [BlogPostController::class, 'index']);
@@ -66,24 +65,35 @@ Route::get('/admin/register', [AdminLoginController::class, 'register']);
 
 
 //persona routes
-Route::post('/persona/add', [AdminPersonaController::class, 'addPersona']);
-Route::get('/persona/add', [AdminPersonaController::class, 'personaForm']);
-Route::delete('/persona/{id}', [AdminPersonaController::class, 'deletePersona'])->name('persona.delete');
-Route::get('/persona/list', [AdminPersonaController::class, 'index']);
-Route::get('/persona/{id}/edit', [AdminPersonaController::class, 'edit'])->name('persona.edit');
-Route::put('/persona/{id}', [AdminPersonaController::class, 'update'])->name('persona.update');
+Route::group(['prefix' => '/persona'], function () {
+    Route::post('add', [AdminPersonaController::class, 'addPersona']);
+    Route::get('add', [AdminPersonaController::class, 'personaForm']);
+    Route::delete('{id}', [AdminPersonaController::class, 'deletePersona'])->name('persona.delete');
+    Route::get('list', [AdminPersonaController::class, 'index']);
+    Route::get('{id}/edit', [AdminPersonaController::class, 'edit'])->name('persona.edit');
+    Route::put('{id}', [AdminPersonaController::class, 'update'])->name('persona.update');
+});
+
 //team member routes
-Route::post('/member/add', [AdminTeamMemberController::class, 'addMember']);
-Route::get('/member/add', [AdminTeamMemberController::class, 'memberForm']);
+Route::group(['prefix' => '/member'], function () {
+    Route::post('add', [AdminTeamMemberController::class, 'addMember']);
+    Route::get('add', [AdminTeamMemberController::class, 'memberForm']);
+    Route::delete('{id}', [AdminTeamMemberController::class, 'destroy'])->name('member.destroy');
+    Route::get('{id}/edit', [AdminTeamMemberController::class, 'edit'])->name('member.edit');
+    Route::put('{id}', [AdminTeamMemberController::class, 'update'])->name('member.update');
+});
 Route::get('/team/list', [AdminTeamMemberController::class, 'index'])->name('team.list');
-Route::delete('/member/{id}', [AdminTeamMemberController::class, 'destroy'])->name('member.destroy');
-Route::get('/member/{id}/edit', [AdminTeamMemberController::class, 'edit'])->name('member.edit');
-Route::put('/member/{id}', [AdminTeamMemberController::class, 'update'])->name('member.update');
+
 
 Route::get('/categories/list', [AdminCategoryController::class, 'index']);
 
 
 //product handle
-Route::get('/products/list', [AdminProductController::class, 'index']);
-Route::get('/products/add', [AdminProductController::class, 'addProduct']);
-Route::post('/products/add', [AdminProductController::class, 'store'])->name('products.add');
+Route::group(['prefix' => '/products'], function () {
+    Route::get('list', [AdminProductController::class, 'index'])->name('products.list');
+    Route::get('add', [AdminProductController::class, 'addProduct']);
+    Route::post('add', [AdminProductController::class, 'store'])->name('products.add');
+    Route::delete('{id}', [AdminProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('{id}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
+    Route::put('{id}', [AdminProductController::class, 'update'])->name('products.update');
+});

@@ -28,10 +28,10 @@
                                 </a>
                             </div>
                             <!-- <div class="col-lg-4 col-sm-2 col-4 col-status">
-                                                        <span class="badge rounded-pill {{ $value->status == 1 ? 'alert-success' : 'alert-danger' }}">
-                                                            {{ $value->status == 1 ? 'Active' : 'Non-active' }}
-                                                        </span>
-                                                    </div> -->
+                                                            <span class="badge rounded-pill {{ $value->status == 1 ? 'alert-success' : 'alert-danger' }}">
+                                                                {{ $value->status == 1 ? 'Active' : 'Non-active' }}
+                                                            </span>
+                                                        </div> -->
                             <div class="col-lg-4 col-sm-2 col-4 col-status">
                                 <span class="info">
                                     {{ $value->designation }}

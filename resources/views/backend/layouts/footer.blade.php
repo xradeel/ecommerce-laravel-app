@@ -20,7 +20,6 @@
 <script src="{{ url('backend/js/vendors/jquery.fullscreen.min.js') }}"></script>
 <script src="{{ url('backend/js/main.js') }}" type="text/javascript"></script>
 <script src="{{ url('backend/js/custom.js') }}" type="text/javascript"></script>
-{{-- <script src="{{ url('ckeditor/ckeditor.js') }}" type="text/javascript"></script> --}}
 </body>
 
 

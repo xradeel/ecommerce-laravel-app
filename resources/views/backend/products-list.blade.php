@@ -31,7 +31,7 @@
                             <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
                                 <a class="itemside" href="#">
                                     <div class="left">
-                                        <img src="{{ asset('frontend/imgs/shop/' . $product->thumbnail1) }}"
+                                        <img src="{{ asset('storage/' . $product->thumbnail1) }}"
                                             class="img-sm img-thumbnail" alt="Item">
                                     </div>
                                     <div class="info">
@@ -39,20 +39,22 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-lg-2 col-sm-2 col-4 col-price"> <span>{{ $product->price }}</span> </div>
+                            <div class="col-lg-2 col-sm-2 col-4 col-price"> <span>{{ '$' . $product->price }}</span> </div>
                             <div class="col-lg-2 col-sm-2 col-4 col-status">
                                 <span
-                                    class="badge rounded-pill alert-success">{{ $product->status ? 'Active' : 'Inactive' }}</span>
+                                    class="badge rounded-pill alert-{{ $product->status ? 'success' : 'danger' }}">{{ $product->status ? 'Active' : 'Inactive' }}</span>
                             </div>
                             <div class="col-lg-1 col-sm-2 col-4 col-date" style="min-width: 9.33%">
                                 <span>{{ $product->category->name }}</span>
                                 {{-- <span>{{ \Carbon\Carbon::parse($product->created_at)->format('Y-m-d') }}</span> --}}
                             </div>
                             <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
-                                <a href="#" class="btn btn-sm font-sm rounded btn-brand">
+                                <a href="{{ route('products.edit', $product->id) }}"
+                                    class="btn btn-sm font-sm rounded btn-brand">
                                     <i class="material-icons md-edit"></i> Edit
                                 </a>
-                                <a href="#" class="btn btn-sm font-sm btn-light rounded">
+                                <a class="btn btn-sm font-sm btn-light rounded delete-product"
+                                    data-product-id="{{ $product->id }}">
                                     <i class="material-icons md-delete_forever"></i> Delete
                                 </a>
                             </div>
@@ -75,4 +77,30 @@
             </nav>
         </div>
     </section>
+    <script>
+        $(document).on('click', '.delete-product', function(e) {
+            e.preventDefault();
+            var id = $(this).data('product-id');
+            if (confirm('Are you sure you want to delete this product?')) {
+                $.ajax({
+                    url: '{{ url('/products') }}/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Product deleted successfully');
+                            location.reload();
+                        } else {
+                            alert('Failed to delete product');
+                        }
+                    },
+                    error: function(response) {
+                        alert('Failed to delete product');
+                    }
+                });
+            }
+        });
+    </script>
 @endsection
