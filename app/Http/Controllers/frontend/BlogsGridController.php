@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\BlogModel;
 use Illuminate\Http\Request;
 
 class BlogsGridController extends Controller
@@ -12,7 +13,9 @@ class BlogsGridController extends Controller
      */
     public function index()
     {
-        return view('frontend.blogs-grid');
+        $blogs = BlogModel::select('id', 'title', 'summary', 'accesstoken', 'tags', 'content', 'read_time', 'image')
+            ->get();
+        return view('frontend.blogs-grid', compact('blogs'));
     }
 
     /**

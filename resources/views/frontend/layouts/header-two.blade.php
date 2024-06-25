@@ -240,8 +240,8 @@
                     </div>
                     <div class="header-action-right">
                         <div class="search-style-2">
-                            <form action="#">
-                                <input type="text" placeholder="Search for items…">
+                            <form action="{{ route('search') }}" method="GET">
+                                <input type="text" name="query" placeholder="Search for items…">
                             </form>
                         </div>
                     </div>
@@ -264,8 +264,8 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
-                        <input type="text" placeholder="Search for items…" />
+                    <form action="{{ route('search') }}" method="GET">
+                        <input type="text" name="query" placeholder="Search for items…" />
                         <button type="submit"><i class="fi-rs-search"></i></button>
                     </form>
                 </div>

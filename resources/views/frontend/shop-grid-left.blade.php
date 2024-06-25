@@ -84,13 +84,10 @@
                         <div class="widget-category mb-30">
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                             <ul class="categories">
-                                <li><a href="{{ url('/shop-full') }}">Shoes & Bags</a></li>
-                                <li><a href="{{ url('/shop-full') }}">Blouses & Shirts</a></li>
-                                <li><a href="{{ url('/shop-full') }}">Dresses</a></li>
-                                <li><a href="{{ url('/shop-full') }}">Swimwear</a></li>
-                                <li><a href="{{ url('/shop-full') }}">Beauty</a></li>
-                                <li><a href="{{ url('/shop-full') }}">Jewelry & Watch</a></li>
-                                <li><a href="{{ url('/shop-full') }}">Accessories</a></li>
+                                @foreach ($categories as $category)
+                                    <li><a href="{{ route('filter.category', $category->id) }}">{{ $category->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">

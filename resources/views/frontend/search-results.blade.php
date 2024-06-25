@@ -1,12 +1,12 @@
 ﻿@extends('frontend.layouts.main')
-@section('title', 'Shop Filter')
+@section('title', 'Search Results')
 @section('main-container')
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="{{ url('/') }}" rel="nofollow">Home</a>
-                    <span></span> Shop
+                    <span></span> Search Results
                 </div>
             </div>
         </div>
@@ -17,12 +17,12 @@
                         <div class="col-lg-12">
                             <div class="shop-product-fillter">
                                 <div class="totall-product">
-                                    <p> We found <strong class="text-brand">{{ $totalProducts }}</strong> items in <strong
-                                            class="text-brand">{{ $category->name }}</strong> for you!</p>
+                                    <p> Search Results for <strong class="text-brand">{{ $query }}</strong> are...
+                                    </p>
                                 </div>
                             </div>
                             <div class="row product-grid-3">
-                                @foreach ($selectedProducts as $product)
+                                @foreach ($products as $product)
                                     <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                         <div class="product-cart-wrap mb-30">
                                             <div class="product-img-action-wrap">
@@ -92,10 +92,9 @@
                     @else
                         <div class="col-lg-12">
                             <div class="totall-product center">
-                                <p>Currently, there are no products available in this category. Please check back later
-                                    or<a href="{{ url('/shop-left') }}"><strong class="text-brand"> explore other
-                                            categories for more
-                                            options.</strong></a></p>
+                                <p>Currently, there are no products available against your search.<a
+                                        href="{{ url('/shop-left') }}"><strong class="text-brand"> Go to Shop</strong></a>
+                                    .</p>
                             </div>
                         </div>
 

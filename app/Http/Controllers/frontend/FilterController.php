@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\AdminCategoryModel;
+use App\Models\frontend\ProductModel;
 use Illuminate\Http\Request;
 
 class FilterController extends Controller
@@ -10,9 +12,27 @@ class FilterController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($catId)
     {
-        return view('frontend.filter');
+        $category = AdminCategoryModel::where('id', $catId)->first();
+
+        $selectedProducts = ProductModel::where('category_id', $catId)->get();
+        $totalProducts = $selectedProducts->count();
+
+        return view('frontend.shop-fullwidth', compact('selectedProducts', 'category', 'totalProducts'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = ProductModel::where('name', 'LIKE', "%$query%")
+            ->orWhere('short_description', 'LIKE', "%$query%")
+            ->orWhere('long_description', 'LIKE', "%$query%")
+            ->get();
+        $totalProducts = $products->count();
+
+        return view('frontend.search-results', compact('products', 'query', 'totalProducts'));
     }
 
     /**

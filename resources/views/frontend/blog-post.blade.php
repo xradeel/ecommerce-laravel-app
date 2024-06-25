@@ -21,10 +21,10 @@
                                 </h1>
                                 <div class="single-header-meta">
                                     <div class="entry-meta meta-1 font-xs mt-15 mb-15">
-                                        <span class="post-by">By <a href="#">Jonh</a></span>
-                                        <span class="post-on has-dot">9 April 2020</span>
-                                        <span class="time-reading has-dot">8 mins read</span>
-                                        <span class="hit-count has-dot">29k Views</span>
+                                        <span class="post-by">By <a href="">{{ $blog->author }}</a></span>
+                                        <span class="post-on has-dot">{{ $blog->updated_at->diffForHumans() }}</span>
+                                        <span class="time-reading has-dot">{{ $blog->read_time }} mins read</span>
+                                        <span class="hit-count has-dot">2k Views</span>
                                     </div>
                                     <div class="social-icons single-share">
                                         <ul class="text-grey-5 d-inline-block">
@@ -50,141 +50,21 @@
                                 </div>
                             </div>
                             <figure class="single-thumbnail">
-                                <img src="frontend/imgs/blog/blog-6.jpg" alt="" />
+                                <img src="{{ asset('storage/' . $blog->image) }}" alt="" />
                             </figure>
                             <div class="single-content">
-                                <p>
-                                    The best smartwatch needs to be able to monitor your health,
-                                    track your location when exercising, offer a variety of
-                                    other apps that you wouldn't normally see on your
-                                    smartphone, sport good battery life and, perhaps most
-                                    importantly, have an affordable price.
-                                </p>
-                                <p>
-                                    We've reviewed and ranked all of the best smartwatches on
-                                    the market right now, and we've made a definitive list of
-                                    the top 10 devices you can buy today. One of the 10 picks
-                                    below may just be your perfect next smartwatch.
-                                </p>
-                                <p>
-                                    Those top-end wearables span from the Apple Watch to
-                                    Fitbits, Garmin watches to Tizen-sporting Samsung watches.
-                                    There's also Wear OS which is Google's own wearable
-                                    operating system in the vein of Apple's watchOS - you’ll see
-                                    it show up in a lot of these devices.
-                                </p>
-                                <p>
-                                    Throughout our review process, we look at the design,
-                                    features, battery life, spec, price and more for each
-                                    smartwatch, rank it against the competition and enter it
-                                    into the list you'll find below.
-                                </p>
-                                <h4>1. Apple Watch SE</h4>
-                                <ul class="mb-20">
-                                    <li>Updated content on a regular basis</li>
-                                    <li>Secure &amp; hassle-free payment</li>
-                                    <li>1-click checkout</li>
-                                    <li>Easy access &amp; smart user dashboard</li>
-                                </ul>
-                                <h4>2. Samsung Galaxy Watch 3</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Eaque esse eos minima. Eius quo autem impedit quibusdam
-                                    maiores, voluptatum quae sunt sit nisi voluptatem sed, esse
-                                    quisquam labore, at est!
-                                </p>
-                                <table class="font-md">
-                                    <tbody>
-                                        <tr class="stand-up">
-                                            <th>Stand Up</th>
-                                            <td>
-                                                <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
-                                            </td>
-                                        </tr>
-                                        <tr class="folded-wo-wheels">
-                                            <th>Folded (w/o wheels)</th>
-                                            <td>
-                                                <p>32.5″L x 18.5″W x 16.5″H</p>
-                                            </td>
-                                        </tr>
-                                        <tr class="folded-w-wheels">
-                                            <th>Folded (w/ wheels)</th>
-                                            <td>
-                                                <p>32.5″L x 24″W x 18.5″H</p>
-                                            </td>
-                                        </tr>
-                                        <tr class="door-pass-through">
-                                            <th>Door Pass Through</th>
-                                            <td>
-                                                <p>24</p>
-                                            </td>
-                                        </tr>
-                                        <tr class="frame">
-                                            <th>Frame</th>
-                                            <td>
-                                                <p>Aluminum</p>
-                                            </td>
-                                        </tr>
-                                        <tr class="weight-wo-wheels">
-                                            <th>Weight (w/o wheels)</th>
-                                            <td>
-                                                <p>20 LBS</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h4>3. Apple Watch 6</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Eaque esse eos minima. Eius quo autem impedit quibusdam
-                                    maiores, voluptatum quae sunt sit nisi voluptatem sed, esse
-                                    quisquam labore, at est!
-                                </p>
-                                <ul class="product-more-infor mb-30">
-                                    <li><span>Type Of Packing</span> Bottle</li>
-                                    <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
-                                    <li><span>Quantity Per Case</span> 100ml</li>
-                                    <li><span>Ethyl Alcohol</span> 70%</li>
-                                    <li><span>Piece In One</span> Carton</li>
-                                </ul>
-                                <h4>4. Fitbit Versa 3</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Eaque esse eos minima. Eius quo autem impedit quibusdam
-                                    maiores, voluptatum quae sunt sit nisi voluptatem sed, esse
-                                    quisquam labore, at est!
-                                </p>
-                                <div class="banner-img banner-big wow fadeIn f-none mb-30 animated">
-                                    <img class="border-radius-10" src="frontend/imgs/banner/banner-4.png" alt="" />
-                                    <div class="banner-text">
-                                        <h6 class="mb-15 mt-40">Repair Services</h6>
-                                        <h5 class="fw-600 mb-20">
-                                            We're an Apple <br />Authorised Service Provider
-                                        </h5>
-                                    </div>
-                                </div>
-                                <h4>5. Samsung Galaxy Watch Active 2</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Eaque esse eos minima. Eius quo autem impedit quibusdam
-                                    maiores, voluptatum quae sunt sit nisi voluptatem sed, esse
-                                    quisquam labore, at est!
-                                </p>
-                                <ul class="product-more-infor mt-30">
-                                    <li><span>Type Of Packing</span> Bottle</li>
-                                    <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
-                                    <li><span>Quantity Per Case</span> 100ml</li>
-                                    <li><span>Ethyl Alcohol</span> 70%</li>
-                                    <li><span>Piece In One</span> Carton</li>
-                                </ul>
+                                {!! $blog->content !!}
                             </div>
                             <div class="entry-bottom mt-50 mb-30 wow fadeIn animated"
                                 style="visibility: visible; animation-name: fadeIn">
                                 <div class="tags w-50 w-sm-100">
-                                    <a href="blog-category-big.html" rel="tag"
-                                        class="hover-up btn btn-sm btn-rounded mr-10">deer</a>
-                                    <a href="blog-category-big.html" rel="tag"
-                                        class="hover-up btn btn-sm btn-rounded mr-10">nature</a>
+                                    @php
+                                        $tags = explode(', ', $blog->tags);
+                                    @endphp
+                                    @foreach ($tags as $tag)
+                                        <a href="{{ url('/blogs') }}" rel="tag"
+                                            class="hover-up btn btn-sm btn-rounded mr-10">{{ $tag }}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

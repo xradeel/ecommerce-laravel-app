@@ -4730,3 +4730,8 @@ body.dark .dropdown-menu .dropdown-item.text-danger {
 /*# sourceMappingURL=main.css.map */
 
 /* custom */
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

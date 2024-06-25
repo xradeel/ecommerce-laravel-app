@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\BlogModel;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -34,9 +35,10 @@ class BlogPostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $accesstoken)
     {
-        //
+        $blog = BlogModel::where('accesstoken', $accesstoken)->firstOrFail();
+        return view('frontend.blog-post', compact('blog'));
     }
 
     /**

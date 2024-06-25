@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\AdminBlogController;
 use App\Http\Controllers\backend\AdminCategoryController;
 use App\Http\Controllers\backend\AdminHomeController;
 use App\Http\Controllers\backend\AdminLoginController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\frontend\AccountController;
 use App\Http\Controllers\frontend\BlogPostController;
 use App\Http\Controllers\frontend\BlogsGridController;
 use App\Http\Controllers\frontend\ContactController;
+use App\Http\Controllers\frontend\FilterController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\MemberController;
 use App\Http\Controllers\frontend\NotFoundController;
@@ -32,18 +34,24 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/product', [ProductController::class, 'index']);
 Route::get('/product-d', [ProductTwoController::class, 'index']);
 Route::get('/shop-left', [ShopGridLeftContoller::class, 'index']);
-Route::get('/shop-full', [ShopFullWidth::class, 'index']);
 Route::get('/persona', [PersonaController::class, 'index']);
 Route::get('/members', [MemberController::class, 'index']);
 Route::get('/contact-us', [ContactController::class, 'index']);
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
 Route::get('/not-found', [NotFoundController::class, 'index']);
 Route::get('/blogs', [BlogsGridController::class, 'index']);
 Route::get('/blog-post', [BlogPostController::class, 'index']);
 Route::get('/purchase-guide', [PurchaseGuideController::class, 'index']);
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index']);
 Route::get('/terms', [TermsConditionController::class, 'index']);
+Route::get('/search', [FilterController::class, 'search'])->name('search');
 
 Route::get('/product/{accesstoken}', [ProductController::class, 'show'])->name('product.show');
+Route::group(['prefix' => '/shop'], function () {
+    Route::get('filter/category/{category}', [FilterController::class, 'index'])->name('filter.category');
+});
+Route::get('/blog-post{assecctoken}', [BlogPostController::class, 'show'])->name('blog');
+
 
 
 
@@ -96,4 +104,13 @@ Route::group(['prefix' => '/products'], function () {
     Route::delete('{id}', [AdminProductController::class, 'destroy'])->name('product.destroy');
     Route::get('{id}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
     Route::put('{id}', [AdminProductController::class, 'update'])->name('products.update');
+});
+
+Route::group(['prefix' => '/admin/blogs'], function () {
+    Route::get('/', [AdminBlogController::class, 'index'])->name('blogs.list');
+    Route::get('add', [AdminBlogController::class, 'create'])->name('blogs.add');
+    Route::delete('{id}', [AdminBlogController::class, 'destroy'])->name('blog.destroy');
+    Route::post('store', [AdminBlogController::class, 'store'])->name('blogs.store');
+    Route::get('{id}/edit', [AdminBlogController::class, 'edit'])->name('blog.edit');
+    Route::put('{id}', [AdminBlogController::class, 'update'])->name('blog.update');
 });

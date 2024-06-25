@@ -49,6 +49,12 @@
                         <span class="text">Add product</span>
                     </a>
                 </li>
+                <li class="menu-item {{ Request::is('admin/blogs') ? 'active' : '' }}">
+                    <a class="menu-link" href="{{ route('blogs.list') }}"> <i
+                            class="icon material-icons md-local_library"></i>
+                        <span class="text">Blogs</span>
+                    </a>
+                </li>
                 <li class="menu-item {{ Request::is('categories/list') ? 'active' : '' }}">
                     <a class="menu-link" href="{{ url('/categories/list') }}"> <i
                             class="icon material-icons md-category"></i>

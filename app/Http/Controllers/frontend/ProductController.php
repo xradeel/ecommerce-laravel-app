@@ -43,8 +43,6 @@ class ProductController extends Controller
     public function show(string $accesstoken)
     {
         $product = ProductModel::where('accesstoken', $accesstoken)->firstOrFail();
-
-        // $product->load('images');
         $product->images = json_decode($product->images);
         return view('frontend.product', compact('product'));
     }
