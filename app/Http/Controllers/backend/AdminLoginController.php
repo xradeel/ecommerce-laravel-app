@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\backend\Admins;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AdminLoginController extends Controller
 {
@@ -14,10 +16,6 @@ class AdminLoginController extends Controller
     public function index()
     {
         return view('backend.admin-login');
-    }
-    public function register()
-    {
-        return view('backend.admin-register');
     }
 
     public function onLogin(Request $request)
@@ -49,7 +47,11 @@ class AdminLoginController extends Controller
      */
     public function create()
     {
-        //
+        if (session()->has('email')) {
+            return view('backend.admin-register');
+        } else {
+            return view('backend.admin-login');
+        }
     }
 
     /**
@@ -57,7 +59,31 @@ class AdminLoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|email|unique:admins,email',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // Create a new admin
+        $admin = new Admins();
+        $admin->email = $request->input('email');
+        $admin->first_name = $request->input('first_name');
+        $admin->last_name = $request->input('last_name');
+        $admin->contact = $request->input('phone');
+        $admin->password = $request->input('password');
+        // $admin->password = Hash::make($request->input('password'));
+        $admin->save();
+
+        if ($admin->save()) {
+            Log::info('ad$admin updated successfully');
+            return redirect()->route('backend.login')->with('success', 'ad$admin updated successfully');
+        } else {
+            Log::error('Failed to update ad$admin');
+            return back()->with('error', 'Failed to update ad$admin');
+        }
     }
 
     /**

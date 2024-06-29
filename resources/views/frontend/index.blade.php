@@ -138,13 +138,6 @@
                                                         alt="Image not found" />
                                                 </a>
                                             </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up"
-                                                    data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                        class="fi-rs-eye"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                    href="{{ url('/wishlist') }}"><i class="fi-rs-heart"></i></a>
-                                            </div>
                                             <div class="product-badges product-badges-position product-badges-mrg">
                                                 <span class="hot">{{ $product->tag }}</span>
                                             </div>
@@ -154,7 +147,8 @@
                                                 <a href="{{ url('/shop-left') }}">{{ $product->category_name }}</a>
                                             </div>
                                             <h2>
-                                                <a href="{{ url('/product/' . $product->accesstoken) }}">{{ $product->name }}</a>
+                                                <a
+                                                    href="{{ url('/product/' . $product->accesstoken) }}">{{ $product->name }}</a>
                                             </h2>
                                             <div class="rating-result" title="90%">
                                                 <span>
@@ -172,8 +166,12 @@
                                                 <span class="old-price">${{ $price }}</span>
                                             </div>
                                             <div class="product-action-1 show">
-                                                <a aria-label="Add To Cart" class="action-btn hover-up"
-                                                    href="{{ url('/cart') }}"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                @php
+                                                    $message = 'Hi%20there,%0A%0AI %20did%20like%20to%20place%20an%20order%20for%20the%20' . $product->name.'.%20Could%20you%20please%20confirm%20the%20availability%20and%20provide%20any%20additional%20details%20regarding%20payment%20and%20shipping?%0A%0AThank%20you!';
+                                                    $wlink = 'https://wa.me/923206511065?text=' . $message;
+                                                @endphp
+                                                <a aria-label="WhatsApp me" class="action-btn hover-up" target="_blank"
+                                                    href="{{ $wlink }}"><i class="fa-brands fa-whatsapp fa-2xl"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -1264,48 +1262,48 @@
                     </div>
                     <div class="carausel-6-columns" id="carausel-6-columns">
                         <!-- <div class="card-1">
-                                                              <figure class="img-hover-scale overflow-hidden">
-                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-1.jpg" alt="" /></a>
-                                                              </figure>
-                                                              <h5><a href="{{ url('/shop-left') }}">T-Shirt</a></h5>
-                                                            </div>
-                                                            <div class="card-1">
-                                                              <figure class="img-hover-scale overflow-hidden">
-                                                                <a href="{{ url('/shop-left') }}">
-                                                                  <img src="frontend/imgs/shop/category-thumb-2.jpg" alt="" /></a>
-                                                              </figure>
-                                                              <h5><a href="{{ url('/shop-left') }}">Bags</a></h5>
-                                                            </div>
-                                                            <div class="card-1">
-                                                              <figure class="img-hover-scale overflow-hidden">
-                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-3.jpg" alt="" /></a>
-                                                              </figure>
-                                                              <h5><a href="{{ url('/shop-left') }}">Sandan</a></h5>
-                                                            </div>
-                                                            <div class="card-1">
-                                                              <figure class="img-hover-scale overflow-hidden">
-                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-4.jpg" alt="" /></a>
-                                                              </figure>
-                                                              <h5><a href="{{ url('/shop-left') }}">Scarf Cap</a></h5>
-                                                            </div>
-                                                            <div class="card-1">
-                                                              <figure class="img-hover-scale overflow-hidden">
-                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-5.jpg" alt="" /></a>
-                                                              </figure>
-                                                              <h5><a href="{{ url('/shop-left') }}">Shoes</a></h5>
-                                                            </div>
-                                                            <div class="card-1">
-                                                              <figure class="img-hover-scale overflow-hidden">
-                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-6.jpg" alt="" /></a>
-                                                              </figure>
-                                                              <h5><a href="{{ url('/shop-left') }}">Pillowcase</a></h5>
-                                                            </div>
-                                                            <div class="card-1">
-                                                              <figure class="img-hover-scale overflow-hidden">
-                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-7.jpg" alt="" /></a>
-                                                              </figure>
-                                                              <h5><a href="{{ url('/shop-left') }}">Jumpsuits</a></h5>
-                                                            </div> -->
+                                                                              <figure class="img-hover-scale overflow-hidden">
+                                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-1.jpg" alt="" /></a>
+                                                                              </figure>
+                                                                              <h5><a href="{{ url('/shop-left') }}">T-Shirt</a></h5>
+                                                                            </div>
+                                                                            <div class="card-1">
+                                                                              <figure class="img-hover-scale overflow-hidden">
+                                                                                <a href="{{ url('/shop-left') }}">
+                                                                                  <img src="frontend/imgs/shop/category-thumb-2.jpg" alt="" /></a>
+                                                                              </figure>
+                                                                              <h5><a href="{{ url('/shop-left') }}">Bags</a></h5>
+                                                                            </div>
+                                                                            <div class="card-1">
+                                                                              <figure class="img-hover-scale overflow-hidden">
+                                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-3.jpg" alt="" /></a>
+                                                                              </figure>
+                                                                              <h5><a href="{{ url('/shop-left') }}">Sandan</a></h5>
+                                                                            </div>
+                                                                            <div class="card-1">
+                                                                              <figure class="img-hover-scale overflow-hidden">
+                                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-4.jpg" alt="" /></a>
+                                                                              </figure>
+                                                                              <h5><a href="{{ url('/shop-left') }}">Scarf Cap</a></h5>
+                                                                            </div>
+                                                                            <div class="card-1">
+                                                                              <figure class="img-hover-scale overflow-hidden">
+                                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-5.jpg" alt="" /></a>
+                                                                              </figure>
+                                                                              <h5><a href="{{ url('/shop-left') }}">Shoes</a></h5>
+                                                                            </div>
+                                                                            <div class="card-1">
+                                                                              <figure class="img-hover-scale overflow-hidden">
+                                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-6.jpg" alt="" /></a>
+                                                                              </figure>
+                                                                              <h5><a href="{{ url('/shop-left') }}">Pillowcase</a></h5>
+                                                                            </div>
+                                                                            <div class="card-1">
+                                                                              <figure class="img-hover-scale overflow-hidden">
+                                                                                <a href="{{ url('/shop-left') }}"><img src="frontend/imgs/shop/category-thumb-7.jpg" alt="" /></a>
+                                                                              </figure>
+                                                                              <h5><a href="{{ url('/shop-left') }}">Jumpsuits</a></h5>
+                                                                            </div> -->
                         @foreach ($popularCategories as $value)
                             <div class="card-1">
                                 <figure class="img-hover-scale overflow-hidden">
@@ -1607,58 +1605,6 @@
                 </div>
             </div>
         </section>
-        <!-- <section class="deals section-padding">
-                                                      <div class="container">
-                                                        <div class="row">
-                                                          <div class="col-lg-6 deal-co">
-                                                            <div class="deal wow fadeIn animated mb-md-4 mb-sm-4 mb-lg-0" style="
-                  background-image: url('frontend/imgs/banner/menu-banner-7.jpg');
-                ">
-                                                              <div class="deal-top">
-                                                                <h2 class="text-brand">Deal of the Day</h2>
-                                                                <h5>Limited quantities.</h5>
-                                                              </div>
-                                                              <div class="deal-content">
-                                                                <h6 class="product-title">
-                                                                  <a href="{{ url('/product') }}">Summer Collection New Morden Design</a>
-                                                                </h6>
-                                                                <div class="product-price">
-                                                                  <span class="new-price">$139.00</span><span class="old-price">$160.99</span>
-                                                                </div>
-                                                              </div>
-                                                              <div class="deal-bottom">
-                                                                <p>Hurry Up! Offer End In:</p>
-                                                                <div class="deals-countdown" data-countdown="2025/03/25 12:10:00"></div>
-                                                                <a href="{{ url('/shop-left') }}" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                          <div class="col-lg-6 deal-co">
-                                                            <div class="deal wow fadeIn animated" style="
-                  background-image: url('frontend/imgs/banner/menu-banner-8.jpg');
-                ">
-                                                              <div class="deal-top">
-                                                                <h2 class="text-brand">Men Clothing</h2>
-                                                                <h5>Shirt & Bag</h5>
-                                                              </div>
-                                                              <div class="deal-content">
-                                                                <h6 class="product-title">
-                                                                  <a href="{{ url('/product') }}">Try something new on vacation</a>
-                                                                </h6>
-                                                                <div class="product-price">
-                                                                  <span class="new-price">$178.00</span><span class="old-price">$256.99</span>
-                                                                </div>
-                                                              </div>
-                                                              <div class="deal-bottom">
-                                                                <p>Hurry Up! Offer End In:</p>
-                                                                <div class="deals-countdown" data-countdown="2026/03/25 00:00:00"></div>
-                                                                <a href="{{ url('/shop-left') }}" class="btn hover-up">Shop Now <i class="fi-rs-arrow-right"></i></a>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    </section> -->
         <section class="section-padding">
             <div class="container">
                 <h3 class="section-title mb-20 wow fadeIn animated">
@@ -2481,167 +2427,167 @@
             </div>
         </section>
         <!-- <section class="mb-45">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
-                                                                    <div class="banner-img wow fadeIn animated mb-md-4 mb-lg-0">
-                                                                        <img src="frontend/imgs/banner/banner-10.jpg" alt="" />
-                                                                        <div class="banner-text">
-                                                                            <span>Shoes Zone</span>
-                                                                            <h4>Save 17% on <br />All Items</h4>
-                                                                            <a href="{{ url('/shop-left') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                                                                        <div class="container">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
+                                                                                    <div class="banner-img wow fadeIn animated mb-md-4 mb-lg-0">
+                                                                                        <img src="frontend/imgs/banner/banner-10.jpg" alt="" />
+                                                                                        <div class="banner-text">
+                                                                                            <span>Shoes Zone</span>
+                                                                                            <h4>Save 17% on <br />All Items</h4>
+                                                                                            <a href="{{ url('/shop-left') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
+                                                                                    <h4 class="section-title style-1 mb-30 wow fadeIn animated">
+                                                                                        Deals & Outlet
+                                                                                    </h4>
+                                                                                    <div class="product-list-small wow fadeIn animated">
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-3.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Fish Print Patched T-shirt</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-4.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Vintage Floral Print Dress</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-5.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Multi-color Stripe Circle Print T-Shirt</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
+                                                                                    <h4 class="section-title style-1 mb-30 wow fadeIn animated">
+                                                                                        Top Selling
+                                                                                    </h4>
+                                                                                    <div class="product-list-small wow fadeIn animated">
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-6.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Geometric Printed Long Sleeve Blosue</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-7.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Print Patchwork Maxi Dress</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-8.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Daisy Floral Print Straps Jumpsuit</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-6">
+                                                                                    <h4 class="section-title style-1 mb-30 wow fadeIn animated">
+                                                                                        Hot Releases
+                                                                                    </h4>
+                                                                                    <div class="product-list-small wow fadeIn animated">
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-9.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Floral Print Casual Cotton Dress</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-1.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Ruffled Solid Long Sleeve Blouse</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                        <article class="row align-items-center">
+                                                                                            <figure class="col-md-4 mb-0">
+                                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-2.jpg" alt="" /></a>
+                                                                                            </figure>
+                                                                                            <div class="col-md-8 mb-0">
+                                                                                                <h4 class="title-small">
+                                                                                                    <a href="{{ url('/product') }}">Multi-color Print V-neck T-Shirt</a>
+                                                                                                </h4>
+                                                                                                <div class="product-price">
+                                                                                                    <span>$238.85 </span>
+                                                                                                    <span class="old-price">$245.8</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </article>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
-                                                                    <h4 class="section-title style-1 mb-30 wow fadeIn animated">
-                                                                        Deals & Outlet
-                                                                    </h4>
-                                                                    <div class="product-list-small wow fadeIn animated">
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-3.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Fish Print Patched T-shirt</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-4.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Vintage Floral Print Dress</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-5.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Multi-color Stripe Circle Print T-Shirt</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
-                                                                    <h4 class="section-title style-1 mb-30 wow fadeIn animated">
-                                                                        Top Selling
-                                                                    </h4>
-                                                                    <div class="product-list-small wow fadeIn animated">
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-6.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Geometric Printed Long Sleeve Blosue</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-7.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Print Patchwork Maxi Dress</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-8.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Daisy Floral Print Straps Jumpsuit</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-6">
-                                                                    <h4 class="section-title style-1 mb-30 wow fadeIn animated">
-                                                                        Hot Releases
-                                                                    </h4>
-                                                                    <div class="product-list-small wow fadeIn animated">
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-9.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Floral Print Casual Cotton Dress</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-1.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Ruffled Solid Long Sleeve Blouse</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                        <article class="row align-items-center">
-                                                                            <figure class="col-md-4 mb-0">
-                                                                                <a href="{{ url('/product') }}"><img src="frontend/imgs/shop/thumbnail-2.jpg" alt="" /></a>
-                                                                            </figure>
-                                                                            <div class="col-md-8 mb-0">
-                                                                                <h4 class="title-small">
-                                                                                    <a href="{{ url('/product') }}">Multi-color Print V-neck T-Shirt</a>
-                                                                                </h4>
-                                                                                <div class="product-price">
-                                                                                    <span>$238.85 </span>
-                                                                                    <span class="old-price">$245.8</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </article>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </section> -->
+                                                                    </section> -->
     </main>
 @endsection

@@ -66,9 +66,12 @@
                                                     <span class="old-price">${{ $price }}</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up"
-                                                        href="{{ url('/cart') }}"><i
-                                                            class="fi-rs-shopping-bag-add"></i></a>
+                                                    @php
+                                                        $message = 'Hi%20there,%0A%0AI %20did%20like%20to%20place%20an%20order%20for%20the%20' . $product->name.'.%20Could%20you%20please%20confirm%20the%20availability%20and%20provide%20any%20additional%20details%20regarding%20payment%20and%20shipping?%0A%0AThank%20you!';
+                                                        $wlink = 'https://wa.me/923206511065?text=' . $message;
+                                                    @endphp
+                                                    <a aria-label="WhatsApp me" class="action-btn hover-up" target="_blank"
+                                                        href="{{ $wlink }}"><i class="fa-brands fa-whatsapp fa-2xl"></i></a>
                                                 </div>
                                             </div>
                                         </div>

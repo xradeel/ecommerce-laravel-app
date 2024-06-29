@@ -72,7 +72,7 @@
                         <span class="text">Personas</span>
                     </a>
                 </li>
-                <li class="menu-item has-submenu">
+                {{-- <li class="menu-item has-submenu">
                     <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
                         <span class="text">Account</span>
                     </a>
@@ -95,7 +95,7 @@
                     <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
                         <span class="text">Statistics</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
             <br>
             <br>

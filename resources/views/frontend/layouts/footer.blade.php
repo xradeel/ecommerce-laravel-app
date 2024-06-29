@@ -119,7 +119,8 @@
                 <p class="text-lg-end text-start font-sm text-muted mb-0">
                     Designed by
                     <a href="http://adeelsarwar.com/" target="_blank">Adeel Sarwar</a>.
-                    All rights reserved
+                    Under the supper vission of 
+                    <a href="https://www.linkedin.com/in/jamil226/" target="_blank">Muhammad Jamil</a>.
                 </p>
             </div>
         </div>

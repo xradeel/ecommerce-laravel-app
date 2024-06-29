@@ -1,5 +1,5 @@
 ﻿@extends('frontend.layouts.main')
-@section('title', 'Home')
+@section('title', $product->name )
 @section('main-container')
     <main class="main">
         <div class="page-header breadcrumb-wrap">
@@ -92,9 +92,15 @@
                                         </div>
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
+                                            @php
+                                                    $message = 'Hi%20there,%0A%0AI %20did%20like%20to%20place%20an%20order%20for%20the%20' . $product->name.'.%20Could%20you%20please%20confirm%20the%20availability%20and%20provide%20any%20additional%20details%20regarding%20payment%20and%20shipping?%0A%0AThank%20you!';
+                                                    $wlink = 'https://wa.me/923206511065?text=' . $message;
+                                                @endphp
                                             <div class="product-extra-link2">
-                                                <button type="submit" class="button button-add-to-cart"> Wan'na buy send
-                                                    message</button>
+                                                <a href="{{ $wlink }}" target="_blank" class="button button-add-to-cart" rel="noopener noreferrer"> Wan'na buy send
+                                                    message</a>
+                                                {{-- <button type="submit" class="button button-add-to-cart"> Wan'na buy send
+                                                    message</button> --}}
                                             </div>
                                         </div>
                                     </div>

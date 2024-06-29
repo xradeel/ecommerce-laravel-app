@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\AdminCategoryModel;
+use App\Models\backend\AdminMemberModel;
+use App\Models\backend\AdminPersonaModel;
+use App\Models\backend\AdminProductModel;
+use App\Models\backend\Admins;
+use App\Models\backend\BlogModel;
 use Illuminate\Http\Request;
 
 class AdminHomeController extends Controller
@@ -12,8 +18,15 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
+        $categoryNo = AdminCategoryModel::count();
+        $memberNo = AdminMemberModel::count();
+        $members = AdminMemberModel::latest()->limit(3)->get();
+        $personaNo = AdminPersonaModel::count();
+        $adminNo = Admins::count();
+        $blogNo = BlogModel::count();
+        $productNo = AdminProductModel::count();
         if (session()->has('email')) {
-            return view('backend.index');
+            return view('backend.index', compact('categoryNo', 'memberNo', 'personaNo', 'adminNo', 'blogNo', 'productNo', 'members'));
         } else {
             return view('backend.admin-login');
         }

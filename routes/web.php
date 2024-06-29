@@ -57,6 +57,8 @@ Route::get('/blog-post{assecctoken}', [BlogPostController::class, 'show'])->name
 
 // backend routes
 Route::get('/admin', [AdminHomeController::class, 'index']);
+Route::get('/admin/register', [AdminLoginController::class, 'create']);
+Route::post('/register-admin', [AdminLoginController::class, 'store'])->name('admin.register');
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('backend.login');
 Route::get('/admin/login', function () {
     if (session()->has('email')) {
@@ -67,7 +69,6 @@ Route::get('/admin/login', function () {
 });
 Route::post('/admin/login', [AdminLoginController::class, 'onLogin']);
 Route::get('/admin/logout', [AdminLoginController::class, 'logoutAdmin']);
-Route::get('/admin/register', [AdminLoginController::class, 'register']);
 
 
 
